@@ -1,39 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-const HeadsAndTails = props => {
+import './HeadAndTails.css'
 
-    const [finalForm, setFinalForm] = useState('');
+const HeadsAndTails = (props) => {
+  const [finalForm, setFinalForm] = useState('')
 
-    const coinFlipper = () => {
+  const coinFlipper = () => {
+    let random = Math.floor(Math.random() * 2) + 1
+    console.log(random)
+    let finalForm = "";
 
-        let random = Math.floor(Math.random() * 2) + 1
-        console.log(random);
-        let finalForm
-        if(random === 1){
-            finalForm = "Heads";
-        }else{
-            finalForm = "Tails"; 
-        }
+    setFinalForm(' ');
 
-        setFinalForm(finalForm)
+    setTimeout(() => {
+      if (random === 1) {
+        finalForm = 'heads'
+      } else {
+        finalForm = 'tails'
+      }
 
-        console.log(finalForm)
+      setFinalForm(finalForm);
+      console.log(finalForm);
+    }, 100)
 
-    }
+  }
 
-    return (
-
+  return (
+    <div className='main-body'>
+      <div>
+        <h1 className='ht-main-title'>FLIP ME</h1>
         <div>
-            <h1>FLIP ME</h1>
-            <button onClick={coinFlipper} className='coin-flipper-btn'>Flip this coin</button>
-            <div>
-                <p>Coin symbol</p>
-                <p className='final-symbol'>{finalForm}</p>
+          <p className="final-symbol">{finalForm}</p>
+          <div onClick={coinFlipper} id="coin" className={finalForm}>
+            <div className="side-a">
+              <span>D</span>
             </div>
+            <div className="side-b">
+              <span>A</span>
+            </div>
+          </div>
         </div>
-
-    )
-
+      </div>
+    </div>
+  )
 }
 
-export default HeadsAndTails;
+export default HeadsAndTails
