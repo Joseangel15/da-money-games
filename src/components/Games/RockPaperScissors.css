@@ -1,0 +1,8 @@
+#rps-main-container{
+    height: 100vh;
+    background-color: #282c34;
+}
+
+.rps-title{
+    margin-top: 0;
+}
